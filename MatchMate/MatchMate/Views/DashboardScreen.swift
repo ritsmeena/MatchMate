@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct DashboardScreen: View {
+    
     @StateObject var viewModel = DashboardVM()
     @State private var currentIndex = 0
     
@@ -15,14 +16,14 @@ struct DashboardScreen: View {
         NavigationView {
             ZStack {
                 if viewModel.isLoading && viewModel.users.isEmpty {
-                    ProgressView("Loading...")
+                    ProgressView("Finding Potential Partners for you...")
                         .progressViewStyle(CircularProgressViewStyle(tint: .blue))
                         .scaleEffect(1.5)
                 } else if !viewModel.users.isEmpty {
                     MateCardView(profile: viewModel.users[currentIndex], onAction: handleAction)
                         .transition(.slide)
                 } else {
-                    Text("No more users.")
+                    Text("Finding Potential Partners for you...")
                         .font(.title)
                         .onAppear {
                             viewModel.fetchUserData()
@@ -30,6 +31,12 @@ struct DashboardScreen: View {
                 }
             }
             .navigationTitle("Find Your Match")
+            .navigationBarItems(trailing:
+                NavigationLink(destination: ActivityScreen()) {
+                    Image(systemName: "bell.fill")
+                    .foregroundColor(.black)
+                }
+            )
             .onAppear {
                 if viewModel.users.isEmpty {
                     viewModel.fetchUserData()
