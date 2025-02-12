@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		0725EAD21AF71B9AF21A95D9 /* Pods_MatchMate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 098CA7EFC97A8B013D295383 /* Pods_MatchMate.framework */; };
+		20A0859F2D5D38EB00A7BC1D /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A0859E2D5D38EB00A7BC1D /* PersistenceController.swift */; };
+		20C7BCC22D5D2730001E883C /* ActivityScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C7BCC12D5D2730001E883C /* ActivityScreen.swift */; };
+		20C7BCC52D5D2896001E883C /* ActivityData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 20C7BCC32D5D2896001E883C /* ActivityData.xcdatamodeld */; };
 		EFB107482D5D134C00F63141 /* DashboardVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFB107472D5D134C00F63141 /* DashboardVM.swift */; };
 		EFE68BA32D5B5CED009D41E8 /* MatchMateApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE68BA22D5B5CED009D41E8 /* MatchMateApp.swift */; };
 		EFE68BA52D5B5CED009D41E8 /* DashboardScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE68BA42D5B5CED009D41E8 /* DashboardScreen.swift */; };
@@ -20,6 +23,9 @@
 /* Begin PBXFileReference section */
 		02DE4EC168CEB11FD721A6C3 /* Pods-MatchMate.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MatchMate.debug.xcconfig"; path = "Target Support Files/Pods-MatchMate/Pods-MatchMate.debug.xcconfig"; sourceTree = "<group>"; };
 		098CA7EFC97A8B013D295383 /* Pods_MatchMate.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MatchMate.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		20A0859E2D5D38EB00A7BC1D /* PersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceController.swift; sourceTree = "<group>"; };
+		20C7BCC12D5D2730001E883C /* ActivityScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityScreen.swift; sourceTree = "<group>"; };
+		20C7BCC42D5D2896001E883C /* ActivityData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ActivityData.xcdatamodel; sourceTree = "<group>"; };
 		23B264C799CD1A3D27B1BADB /* Pods-MatchMate.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MatchMate.release.xcconfig"; path = "Target Support Files/Pods-MatchMate/Pods-MatchMate.release.xcconfig"; sourceTree = "<group>"; };
 		EFB107472D5D134C00F63141 /* DashboardVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardVM.swift; sourceTree = "<group>"; };
 		EFE68B9F2D5B5CED009D41E8 /* MatchMate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MatchMate.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -87,6 +93,7 @@
 				EFE68BA22D5B5CED009D41E8 /* MatchMateApp.swift */,
 				EFE68BA62D5B5CEF009D41E8 /* Assets.xcassets */,
 				EFE68BA82D5B5CEF009D41E8 /* Preview Content */,
+				20A0859E2D5D38EB00A7BC1D /* PersistenceController.swift */,
 			);
 			path = MatchMate;
 			sourceTree = "<group>";
@@ -103,6 +110,7 @@
 			isa = PBXGroup;
 			children = (
 				EFE68BB52D5B6166009D41E8 /* UserData.swift */,
+				20C7BCC32D5D2896001E883C /* ActivityData.xcdatamodeld */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -120,6 +128,7 @@
 			children = (
 				EFE68BA42D5B5CED009D41E8 /* DashboardScreen.swift */,
 				EFE68BB32D5B609D009D41E8 /* MateCardView.swift */,
+				20C7BCC12D5D2730001E883C /* ActivityScreen.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -222,9 +231,12 @@
 			files = (
 				EFB107482D5D134C00F63141 /* DashboardVM.swift in Sources */,
 				EFE68BA52D5B5CED009D41E8 /* DashboardScreen.swift in Sources */,
+				20C7BCC52D5D2896001E883C /* ActivityData.xcdatamodeld in Sources */,
+				20C7BCC22D5D2730001E883C /* ActivityScreen.swift in Sources */,
 				EFE68BA32D5B5CED009D41E8 /* MatchMateApp.swift in Sources */,
 				EFE68BB62D5B6166009D41E8 /* UserData.swift in Sources */,
 				EFE68BB42D5B609D009D41E8 /* MateCardView.swift in Sources */,
+				20A0859F2D5D38EB00A7BC1D /* PersistenceController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -432,6 +444,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		20C7BCC32D5D2896001E883C /* ActivityData.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				20C7BCC42D5D2896001E883C /* ActivityData.xcdatamodel */,
+			);
+			currentVersion = 20C7BCC42D5D2896001E883C /* ActivityData.xcdatamodel */;
+			path = ActivityData.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = EFE68B972D5B5CEC009D41E8 /* Project object */;
 }

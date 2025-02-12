@@ -7,13 +7,12 @@
 
 import Foundation
 import SwiftUI
+import CoreData
 
 struct MateCardView: View {
     
     var profile: User
     var onAction: () -> Void
-    
-    @State private var offset = CGSize.zero
     
     var body: some View {
         
@@ -36,7 +35,7 @@ struct MateCardView: View {
             VStack(spacing: 0){
                 Spacer()
                 HStack {
-                    Text("\(profile.name.first), \(profile.dob.age)")
+                    Text("\(profile.name.first) \(profile.name.last), \(profile.dob.age)")
                         .font(.title)
                         .bold()
                         .foregroundColor(.white)
@@ -60,7 +59,7 @@ struct MateCardView: View {
                     Button(action: {
                         print("\(profile.name.first) disliked")
                         onAction()
-                        resetOffset()
+                        storeUserAction(action: false)
                     }) {
                         Image(systemName: "xmark.circle")
                             .resizable()
@@ -74,7 +73,7 @@ struct MateCardView: View {
                     Button(action: {
                         print("\(profile.name.first) liked")
                         onAction()
-                        resetOffset()
+                        storeUserAction(action: true)
                     }) {
                         Image(systemName: "heart.circle")
                             .resizable()
@@ -87,29 +86,25 @@ struct MateCardView: View {
             }
             .cornerRadius(20)
             .frame(width: 350,height: 600)
-            
         }
-        .offset(x: offset.width, y: offset.height)
-        .rotationEffect(.degrees(Double(offset.width / 20)))
-        .gesture(
-            DragGesture()
-                .onChanged { gesture in
-                    offset = gesture.translation
-                }
-                .onEnded { _ in
-                    if offset.width > 100 {
-                        print("\(profile.name.first) liked")
-                        onAction()
-                    } else if offset.width < -100 {
-                        print("\(profile.name.first) disliked")
-                        onAction()
-                    }
-                    resetOffset()
-                }
-        )
     }
     
-    private func resetOffset() {
-        offset = .zero
+    private func storeUserAction(action: Bool) {
+        let context = PersistenceController.shared.viewContext
+        
+        let userAction = UserAction(context: context)
+        userAction.mateName = "\(profile.name.first) \(profile.name.last)"
+        userAction.mateAge = Int16(profile.dob.age)
+        userAction.mateAddress = "\(profile.location.street.number) - \(profile.location.street.name), \(profile.location.city ), \(profile.location.state ), \(profile.location.country )"
+        userAction.mateID = profile.id
+        userAction.actionType = action
+        userAction.mateThumbnailImage = profile.picture.thumbnail
+        
+        do {
+            try context.save()
+            print("Saved \(action) for \(profile.name.first)")
+        } catch {
+            print("Error saving action: \(error.localizedDescription)")
+        }
     }
 }
